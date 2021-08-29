@@ -5,16 +5,16 @@ import 'package:vector_math/vector_math.dart';
 class Fbx3DObject {
   FbxNode node;
   FbxMesh mesh;
-  Matrix4 transform;
+  Matrix4? transform;
 
-  Float32List points;
-  Float32List normals;
-  Float32List uvs;
-  Uint16List indices;
+  Float32List? points;
+  Float32List? normals;
+  Float32List? uvs;
+  Uint16List? indices;
 
-  Float32List skinPalette;
-  Float32List skinWeights;
-  Float32List skinIndices;
+  Float32List? skinPalette;
+  Float32List? skinWeights;
+  Float32List? skinIndices;
 
   Fbx3DObject(this.node, this.mesh);
 
@@ -26,19 +26,19 @@ class Fbx3DObject {
     }
   }
 
-  void setPoints(Float32List p) {
+  void setPoints(Float32List? p) {
     if (points == null) {
       points = (p);
     }
   }
 
-  void setNormals(Float32List n) {
+  void setNormals(Float32List? n) {
     if (normals == null) {
       normals = (n);
     }
   }
 
-  void setUvs(Float32List uv) {
+  void setUvs(Float32List? uv) {
     if (uv == null) {
       return;
     }
@@ -48,13 +48,13 @@ class Fbx3DObject {
     }
   }
 
-  void setIndices(Uint16List i) {
+  void setIndices(Uint16List? i) {
     if (indices == null) {
       indices = (i);
     }
   }
 
-  void setSkinning(Float32List weights, Float32List indices) {
+  void setSkinning(Float32List? weights, Float32List? indices) {
     if (skinWeights == null) {
       skinWeights = (weights);
       skinIndices = (indices);

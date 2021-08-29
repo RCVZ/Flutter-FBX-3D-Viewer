@@ -15,11 +15,11 @@ class FbxLight extends FbxNodeAttribute {
   static const int QUADRATIC_DECAY = 2;
   static const int CUBIC_DECAY = 3;
 
-  FbxProperty color;
-  FbxProperty intensity;
-  FbxProperty coneAngle;
-  FbxProperty decay;
-  FbxProperty lightType;
+  FbxProperty? color;
+  FbxProperty? intensity;
+  FbxProperty? coneAngle;
+  FbxProperty? decay;
+  FbxProperty? lightType;
 
   FbxLight(int id, String name, FbxElement element, FbxScene scene)
     : super(id, name, 'Light', element, scene) {
@@ -30,18 +30,18 @@ class FbxLight extends FbxNodeAttribute {
     lightType = addProperty('LightType', DIRECTIONAL);
 
     for (final c in element.children) {
-      if (c.id == 'Properties60') {
+      if (c!.id == 'Properties60') {
         for (final p in c.children) {
-          if (p.id == 'Property') {
-            if (p.properties[0] == 'Color') {
-              color.value = Vector3(p.getDouble(3), p.getDouble(4),
+          if (p!.id == 'Property') {
+            if (p.properties![0] == 'Color') {
+              color!.value = Vector3(p.getDouble(3), p.getDouble(4),
                                     p.getDouble(5));
-            } else if (p.properties[0] == 'Intensity') {
-              intensity.value = p.getDouble(3);
-            } else if (p.properties[0] == 'Cone angle') {
-              coneAngle.value = p.getDouble(3);
-            } else if (p.properties[0] == 'LightType') {
-              lightType.value = p.getInt(3);
+            } else if (p.properties![0] == 'Intensity') {
+              intensity!.value = p.getDouble(3);
+            } else if (p.properties![0] == 'Cone angle') {
+              coneAngle!.value = p.getDouble(3);
+            } else if (p.properties![0] == 'LightType') {
+              lightType!.value = p.getInt(3);
             }
           }
         }

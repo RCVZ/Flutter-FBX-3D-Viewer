@@ -5,10 +5,10 @@ import 'fbx_anim_key.dart';
 import 'fbx_scene.dart';
 
 class FbxAnimCurve extends FbxObject {
-  double defaultValue;
+  double? defaultValue;
   List<FbxAnimKey> keys = [];
 
-  FbxAnimCurve(int id, String name, FbxElement element, FbxScene scene)
+  FbxAnimCurve(int id, String name, FbxElement? element, FbxScene scene)
     : super(id, name, 'AnimCurve', element, scene) {
 
     if (element == null) {
@@ -16,11 +16,11 @@ class FbxAnimCurve extends FbxObject {
     }
 
     //int version = 0;
-    List keyTime;
-    List keyValue;
+    List? keyTime;
+    List? keyValue;
 
     for (final c in element.children) {
-      if (c.id == 'Default') {
+      if (c!.id == 'Default') {
 
       } else if (c.id == 'KeyVer') {
         //version = c.getInt(0);
@@ -28,12 +28,12 @@ class FbxAnimCurve extends FbxObject {
         if (c.children.isEmpty) {
           continue;
         }
-        keyTime = c.children[0].properties;
+        keyTime = c.children[0]!.properties;
       } else if (c.id == 'KeyValueFloat') {
         if (c.children.isEmpty) {
           continue;
         }
-        keyValue = c.children[0].properties;
+        keyValue = c.children[0]!.properties;
       } else if (c.id == 'KeyAttrFlags') {
 
       } else if (c.id == 'KeyAttrDataFloat') {

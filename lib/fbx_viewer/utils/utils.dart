@@ -14,17 +14,21 @@ drawText(Canvas canvas, String s, Offset offset, {double fontSize = 18}) {
   final textStyle = TextStyle(
     color: Colors.white,
     fontSize: fontSize,
-    shadows: [Shadow(blurRadius: 5, color: Colors.black, offset: const Offset(1, 1))],
+    shadows: [
+      Shadow(blurRadius: 5, color: Colors.black, offset: const Offset(1, 1))
+    ],
   );
   final textSpan = TextSpan(text: s, style: textStyle);
-  final textPainter = TextPainter(text: textSpan, textDirection: TextDirection.ltr);
+  final textPainter =
+      TextPainter(text: textSpan, textDirection: TextDirection.ltr);
   textPainter.layout(minWidth: 0);
   textPainter.paint(canvas, offset);
 }
 
 drawErrorText(Canvas canvas, String sHead, String sDesc) {
   drawText(canvas, sDesc, Offset(10, ScreenUtils.height / 2), fontSize: 12);
-  drawText(canvas, sHead, Offset(10, ScreenUtils.height / 2 - 30), fontSize: 16);
+  drawText(canvas, sHead, Offset(10, ScreenUtils.height / 2 - 30),
+      fontSize: 16);
 }
 
 Offset gen2DPointFrom3D(Math.Vector3 v) {
@@ -32,7 +36,9 @@ Offset gen2DPointFrom3D(Math.Vector3 v) {
   return Offset(vn.x, vn.y);
 }
 
-Color randomColor({double opacity}) => Color((Random().nextDouble() * 0xFFFFFF).toInt() << 0).withOpacity(opacity ?? 1.0);
+Color randomColor({double? opacity}) =>
+    Color((Random().nextDouble() * 0xFFFFFF).toInt() << 0)
+        .withOpacity(opacity ?? 1.0);
 
 int convertABGRtoARGB(int color) {
   int newColor = color;
@@ -61,4 +67,3 @@ class ImageLoader {
     return completer.future;
   }
 }
-

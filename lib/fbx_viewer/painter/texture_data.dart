@@ -14,13 +14,13 @@ import 'package:image/image.dart' as IMG;
 ///
 
 class TextureData {
-  IMG.Image imageIMG;
-  UI.Image imageUI;
-  int width;
-  int height;
+  IMG.Image? imageIMG;
+  UI.Image? imageUI;
+  late int width;
+  late int height;
 
-  load(BuildContext context,String path, {int resizeWidth}) async {
-    ByteData imageData;
+  load(BuildContext context,String path, {int? resizeWidth}) async {
+    late ByteData imageData;
 
     if (path.startsWith("assets/"))
       imageData = await rootBundle.load(path);
@@ -33,11 +33,11 @@ class TextureData {
 
     final buffer = imageData.buffer;
     final imageInBytes = buffer.asUint8List(imageData.offsetInBytes, imageData.lengthInBytes);
-    IMG.Image resized = IMG.copyResize(IMG.decodeImage(imageInBytes), width: resizeWidth);
+    IMG.Image resized = IMG.copyResize(IMG.decodeImage(imageInBytes)!, width: resizeWidth);
 
     imageIMG = resized;
-    width = imageIMG.width;
-    height = imageIMG.height;
+    width = imageIMG!.width;
+    height = imageIMG!.height;
 
     imageUI = await ImageLoader.loadImage(context, path);
   }
@@ -49,6 +49,6 @@ class TextureData {
     int u = ((tu * width).toInt() % width).abs();
     int v = ((tv * height).toInt() % height).abs();
 
-    return Color(convertABGRtoARGB(imageIMG.getPixel(u, v)));
+    return Color(convertABGRtoARGB(imageIMG!.getPixel(u, v)));
   }
 }

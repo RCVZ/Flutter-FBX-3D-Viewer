@@ -19,7 +19,7 @@ enum FbxReferenceMode {
 }
 
 
-FbxReferenceMode stringToReferenceMode(String id) {
+FbxReferenceMode stringToReferenceMode(String? id) {
   if (id == 'Direct') {
     return FbxReferenceMode.Direct;
   } else if (id == 'Index') {

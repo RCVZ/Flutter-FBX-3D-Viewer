@@ -3,7 +3,7 @@ import 'fbx_element.dart';
 
 /// Base class for [FbxAsciiParser] and [FbxBinaryParser].
 abstract class FbxParser {
-  FbxElement nextElement();
+  FbxElement? nextElement();
 
   // Get the raw scene name, which is different depending on if it's an
   // ascii or binary file.
@@ -11,5 +11,5 @@ abstract class FbxParser {
 
   // Node names are encoded with the type and need to be extracted.
   // The format of this encoding is different for binary and ascii;
-  String getName(String rawName);
+  String getName(String? rawName);
 }
