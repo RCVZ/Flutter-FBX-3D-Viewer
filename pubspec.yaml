@@ -4,7 +4,7 @@ version: 1.0.0
 homepage: https://github.com/klaszlo8207/Flutter-FBX-3D-Viewer
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: ">=2.11.0 <3.0.0"
 
 dependencies:
   vector_math: ^2.0.8

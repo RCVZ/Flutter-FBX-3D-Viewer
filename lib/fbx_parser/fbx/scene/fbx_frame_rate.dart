@@ -20,15 +20,15 @@ class FbxFrameRate {
   static const int FPS_72 = 16;
   static const int FPS_59_DOT_94 = 17;
 
-  static double timeToFrame(int timeValue, int? frameRate) {
+  static double timeToFrame(int timeValue, int frameRate) {
     return (timeValue / 1924423250.0);
   }
 
-  static double timeToSeconds(int timeValue, int? frameRate) {
+  static double timeToSeconds(int timeValue, int frameRate) {
     return frameToSeconds(timeToFrame(timeValue, frameRate), frameRate);
   }
 
-  static double frameToSeconds(double frame, int? frameRate) {
+  static double frameToSeconds(double frame, int frameRate) {
     switch (frameRate) {
       case FPS_24:
         return frame / 24.0;
